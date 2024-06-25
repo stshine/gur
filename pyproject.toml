@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 dependencies = [
     "django>=5.0.6",
+    "psycopg2>=2.9.9",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
