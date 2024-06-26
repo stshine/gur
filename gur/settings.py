@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'gur.urls'
 
 TEMPLATES = [
+    {
+        'BACKEND': 'django_jinja.jinja2.Jinja2',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'match_extension': '.html',
+            'match_regex': r'^(?!admin/).*',
+        }
+    },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],

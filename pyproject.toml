@@ -5,6 +5,7 @@ description = "Add your description here"
 dependencies = [
     "django>=5.0.6",
     "psycopg2>=2.9.9",
+    "django-jinja>=2.11.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
