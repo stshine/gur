@@ -1,0 +1,27 @@
+{
+  "name": "gur",
+  "version": "0.1.0",
+  "description": "frontend resources for gur",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rspack --mode production",
+    "dev": "rspack",
+    "watch": "rspack --watch",
+    "lint": "eslint --ext js,jsx,ts,tsx,vue src"
+  },
+  "keywords": [
+    "frontend",
+    "gur",
+    "bundler"
+  ],
+  "author": "Pu Xingyu",
+  "license": "ISC",
+  "devDependencies": {
+    "@rspack/cli": "^1.0.0-alpha.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^9.6.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
+  }
+}

@@ -11,3 +11,7 @@ wheels/
 
 # Env file
 /.env
+
+# Fronend
+/node_modules/
+/static/
