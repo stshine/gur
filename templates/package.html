@@ -7,7 +7,84 @@
 </head>
 <body>
     <header class="site-header">
-        
+        <a href="https://www.gentoo.org" class="site-logo">
+            <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo">
+        </a>
+        <span class="site-label">Gentoo User Repo</span>
     </header>
+    <header class="nav-header">
+        <ul class="gur-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/categories">Packages</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <input type="search" name="packages" id="packages">
+    </header>
+    <main>
+        <header class="package-header">
+            <div class="row">
+                <h1 class="package-title">
+                    {{ package.name }}
+                </h1>
+                <span class="package-descripion">
+                    {{ package.description }}
+                </span>
+            </div>
+        </header>
+        <section class="page-main">
+            <div class="page-content">
+                <nav class="tabpane">
+                    <a href="" class="nav-link">Overview</a>
+                    <a href="" class="nav-link">Dependencies</a>
+                    <a href="" class="nav-link">Revdeps</a>
+                    <a href="" class="nav-link">Files</a>
+                </nav>
+                <div class="tab-content">
+                    <h2>Package details</h2>
+                    <div class="metadata-card">
+                        <ul class="metadata-list">
+                            <li class="metadata-item">
+                                <span class="metadata-label">Git Url: </span>
+                                <span class="metadata-value">{{ package.git_url }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">Version: </span>
+                                <span class="metadata-value">{{ package.version }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">Upstream Url: </span>
+                                <span class="metadata-value">{{ package.upstream_url }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">License: </span>
+                                <span class="metadata-value">{{ package.license }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">Maintainer: </span>
+                                <span class="metadata-value">{{ package.maintainer }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">Use flags: </span>
+                                <span class="metadata-value">{{ package.use_flags }}</span>
+                            </li>
+                            <li class="metadata-item">
+                                <span class="metadata-label">Keywords: </span>
+                                <span class="metadata-value">{{ package.keywords }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="package-actions">
+
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span class="footer-text">Gentoo User Repo</span>
+            <span class="footer-text">2020</span>
+        </div>
+    </footer>
 </body>
 </html>
