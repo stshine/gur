@@ -18,10 +18,12 @@
   "author": "Pu Xingyu",
   "license": "ISC",
   "devDependencies": {
-    "@rspack/cli": "^1.0.0-alpha.0",
+    "@rspack/cli": "1.0.0-alpha.1",
+    "@rspack/core": "1.0.0-alpha.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.6.0",
     "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
     "tailwindcss": "^3.4.4"
   }
 }

@@ -57,9 +57,9 @@ module.exports = {
       //   ],
       //   exclude: /node_modules/,
       // },
-      // {
-      //   test: /\.css$/,
-      //   use: [
+      {
+        test: /\.css$/,
+        use: [
       //     {
       //       loader: MiniCssExtractPlugin.loader,
       //       options: {},
@@ -70,9 +70,10 @@ module.exports = {
       //         importLoaders: 1,
       //       },
       //     },
-      //     "postcss-loader",
-      //   ],
-      // },
+          "postcss-loader",
+        ],
+        type: 'css',
+      },
       {
         test: /\.(png|jpg|gif)$/,
           type: "asset/resource",
