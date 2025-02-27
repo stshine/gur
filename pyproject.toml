@@ -1,0 +1,7 @@
+[project]
+name = "gur"
+version = "0.1.0"
+description = "Web backend for the Gentoo User Repository project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
