@@ -1,0 +1,30 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.1",
+  "description": "frontend resources for gur",
+  "scripts": {
+    "dev": "rspack dev",
+    "build": "rspack build",
+    "preview": "rspack preview"
+  },
+  "keywords": [
+    "frontend",
+    "gur",
+    "bundler"
+  ],
+  "author": "Pu Xingyu",
+  "devDependencies": {
+    "@rspack/cli": "^1.7.4",
+    "@rspack/core": "^1.7.4",
+    "sass-embedded": "^1.87.0",
+    "sass-loader": "^16.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@gentoo/tyrian": "git+https://anongit.gentoo.org/git/sites/tyrian-theme.git#v2.0.2",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^4.6.2"
+  }
+}
