@@ -10,5 +10,6 @@ dependencies = [
     "django-ninja>=1.5.3",
     "psycopg[binary,pool]>=3.3.2",
     "pyforgejo>=2.0.5",
+    "python-dotenv>=1.2.1",
     "requests>=2.32.4",
 ]

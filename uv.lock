@@ -167,6 +167,7 @@ dependencies = [
     { name = "django-ninja" },
     { name = "psycopg", extra = ["binary", "pool"] },
     { name = "pyforgejo" },
+    { name = "python-dotenv" },
     { name = "requests" },
 ]
 
@@ -177,6 +178,7 @@ requires-dist = [
     { name = "django-ninja", specifier = ">=1.5.3" },
     { name = "psycopg", extras = ["binary", "pool"], specifier = ">=3.3.2" },
     { name = "pyforgejo", specifier = ">=2.0.5" },
+    { name = "python-dotenv", specifier = ">=1.2.1" },
     { name = "requests", specifier = ">=2.32.4" },
 ]
 
