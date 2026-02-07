@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="package-header row">
+  <div class="col-5">
+    <h1>{{ package.name }}</h1>
+  </div>
+  <div class="col-7 lead">
+    {{ package.description }}
+  </div>
+</header>
+<div class="row">
+  <div class="col-9">
+    <ul class="nav nav-tabs" role="tablist">
+      <a class="nav-link" href="#" data-target="#overview-tab-pane" data-toggle="tab" role="tab"
+        aria-controls="overview-tab-pane" aria-selected="true">
+        <i class="fa fa-info mr-1" aria-hidden="true"></i>
+        Overview
+      </a>
+      <a class="nav-link" href="#" data-target="#depends-tab-pane" data-toggle="tab" role="tab"
+        aria-controls="depends-tab-pane" aria-selected="false">
+        <i class="fa fa-link" aria-hidden="true"></i>
+        Dependencies
+      </a>
+      <a class="nav-link" href="#" data-target="#depents-tab-pane" data-toggle="tab" role="tab"
+        aria-controls="depents-tab-pane" aria-selected="false">
+        <i class="fa fa-link" aria-hidden="true"></i>
+        Dependents
+      </a>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>Overview</h3>
+        <div class="card">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Description
+                </div>
+                <div class="col-9">
+                  {{ package.description }}
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Upstream
+                </div>
+                <div class="col-9">
+                  <a href="{{ package.upstream_url }}">{{ package.upstream_url }}</a>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  License
+                </div>
+                <div class="col-9">
+                  {{ package.license }}
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Maintainer
+                </div>
+                <div class="col-9">
+                  {{ package.maintainer.username }}
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Submitted
+                </div>
+                <div class="col-9">
+                  2023-10-01
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Updated
+                </div>
+                <div class="col-9">
+                  2024-01-01
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-3">
+                  Keywords
+                </div>
+                <div class="col-9">
+                  <span class="badge badge-primary">qt</span>
+                  <span class="badge badge-primary">gui</span>
+                  <span class="badge badge-primary">c++</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane" id="depends-tab-pane" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>Dependencies</h3>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Package</th>
+                  <th scope="col">RDEPEND</th>
+                  <th scope="col">DEPEND</th>
+                  <th scope="col">BDEPEND</th>
+                  <th scope="col">IDEPEND</th>
+                  <th scope="col">PDEPEND</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>app-alternatives/ninja</th>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                </tr>
+                <tr>
+                  <th>dev-build/cmake</th>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="depents-tab-pane" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>Required by</h3>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Package</th>
+                  <th scope="col">RDEPEND</th>
+                  <th scope="col">DEPEND</th>
+                  <th scope="col">BDEPEND</th>
+                  <th scope="col">IDEPEND</th>
+                  <th scope="col">PDEPEND</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>app-admin/qtpass</th>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                </tr>
+                <tr>
+                  <th>app-crypt/xca/th>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-check"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                  <td><i class="fa fa-times"></i></td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <h4>Package Actions</h4>
+    <dl>
+      <dd><a href="{{ package.git_url }}">Repository</a></dd>
+      <dd><a href="">Issue tracker</a></dd>
+      <dd><a href="">View ebuild</a></dd>
+      <dd><a href="">View commit log</a></dd>
+      <dd><a href="">Download snapshot</a></dd>
+      <dd><a href="">Find in wiki</a></dd>
+    </dl>
+  </div>
+</div>
+
+<section class="comments">
+  {% for comment in comments %}
+  <div class="comment">
+    <header class="comment-header">
+      <span>{{comment.author.name}}</span>
+      <span>{{comment.created_at}}</span>
+    </header>
+    <div class="comment-body">
+      {{ comment.content }}
+    </div>
+    <div class="comment-actions">
+      <a href="#"><i class="fas fa-reply"></i> Reply</a>
+      <a href="#"><i class="fas fa-edit"></i> Edit</a>
+      <a href="#" class="text-danger"><i class="fas fa-trash"></i> Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock content %}

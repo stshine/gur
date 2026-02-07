@@ -3,7 +3,10 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 
 from app.services import ForgejoService
-from app.forms import RegisterForm
+from app.forms import RegisterForm, PackageForm
+from app.models import Package
+# import forgejo
+
 
 # Create your views here.
 def index(request: HttpRequest):
@@ -22,6 +25,42 @@ def dashboard(request: HttpRequest):
     my_packages = Package.objects.filter(maintainer=request.user)
     return render(request, "dashboard.html", {"my_packages": my_packages})
 
+
+def package_show(request: HttpRequest, package_name: str):
+    package = Package.objects.get(name=package_name)
+    return render(request, "package/show.html", {"package": package})
+
+
+def package_new(request: HttpRequest):
+    if request.method == "POST":
+        form = PackageForm(request.POST)
+
+        if form.is_valid():
+            package_name = form.cleaned_data["name"]
+            package_description = form.cleaned_data["description"]
+            forgejo_service = ForgejoService(
+                os.environ.get("FORGEJO_APIKEY", ""),
+                os.environ.get("FORGEJO_URL", "http://localhost:3000") + "/api/v1"
+            )
+            git_repo = forgejo_service.create_repository("stshine", package_name, package_description)
+            if not git_repo:
+                return render(request, "package/create.html", {"error": "Failed to create repository."})
+
+            Package.objects.create(
+                name=package_name,
+                category=form.cleaned_data["category"],
+                description=form.cleaned_data["description"],
+                upstream_url=form.cleaned_data["upstream_url"],
+                git_url=git_repo.url,
+                maintainer=request.user,
+                license=form.cleaned_data["license"],
+            )
+            return redirect("package_show", package_name=package_name)
+
+    else:
+        form = PackageForm()
+
+    return render(request, "package/new.html", { "form": form })
 
 
 def register(request: HttpRequest):

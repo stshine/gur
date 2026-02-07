@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-12">
+    <div class="jumbotron mb-3">
+        <h1 class="display-4">Add New Package</h1>
+        <form action="/packages/new" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-primary">Create Package</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
