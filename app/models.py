@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 class Base(models.Model):
     id = models.BigAutoField(primary_key=True)
     created_at = models.DateTimeField(db_index=True, auto_now_add=True)
@@ -11,27 +12,26 @@ class Base(models.Model):
 
 
 # Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
+class Category(Base):
+    name = models.CharField(max_length=127, unique=True)
 
     def __str__(self) -> str:
         return self.name
 
 
-class Useflag(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(null=False)
-    created_at = models.DateTimeField(auto_now_add=True)
+class Useflag(Base):
+    name = models.CharField(max_length=127, unique=True)
+    description = models.TextField()
 
-class Package(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField(null=False)
-    git_url = models.TextField(null=False)
-    upstream_url = models.TextField(null=False)
-    license = models.TextField(null=False)
+    def __str__(self) -> str:
+        return self.name
+
+
+class Package(Base):
+    name = models.CharField(max_length=255, unique=True)
+    description = models.TextField()
+    git_url = models.CharField(max_length=511)
+    upstream_url = models.CharField(max_length=511)
+    license = models.CharField(max_length=127)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     maintainer = models.ForeignKey(User, on_delete=models.CASCADE)
-    useflags = models.ManyToManyField(Useflag)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
