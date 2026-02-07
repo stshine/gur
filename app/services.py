@@ -51,12 +51,13 @@ class ForgejoService:
         return user
 
 
-    def create_repository(self, name: str, description: str) -> Repository:
+    def create_repository(self, username: str, name: str, description: str) -> Repository:
         """
         Create a new repository
         """
         try:
-            repo = self.client.repository.create_current_user_repo(
+            repo = self.client.admin.create_repo(
+                username=username,
                 name=name,
                 description=description,
             )
