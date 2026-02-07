@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-12">
+    <div class="jumbotron mb-3">
+        <form action="/packages/search" method="get">
+            <div class="px-5">
+                <div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-12">
+    <button class="btn btn-primary mb-3" onclick="location.href='/packages/new'">
+        <span class="fa fa-fw fa-plus">
+        </span>
+        Add new package
+    </button>
+</div>
+<div class="col-12">
+    <h3 class="mb-2">
+        <span class="fa fa-fw fa-history">
+        </span>
+        <a href="/packages/added" class="text-dark">My packages</a>
+    </h3>
+    <div class="card">
+        <div class="table-responsive rounded">
+            <table class="table table-striped rounded mb-0">
+                <tbody>
+                    {% for package in my_packages %}
+                    <tr>
+                        <td>
+                            <a href="/package/{{ package.name }}">
+                                <span class="text-muted">{{ package.category.name }}</span> / <strong>{{ package.name }}</strong>
+                            </a>
+                        </td>
+                        <td>{{ package.description }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

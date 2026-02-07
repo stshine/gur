@@ -6,8 +6,22 @@ from app.services import ForgejoService
 from app.forms import RegisterForm
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, world!")
+def index(request: HttpRequest):
+    if request.user.is_authenticated:
+        return redirect("dashboard")
+    else:
+        return redirect("home")
+
+
+def home(request: HttpRequest):
+    add_packages = Package.objects.all()
+    return render(request, "index.html", {"added_packages": add_packages})
+
+
+def dashboard(request: HttpRequest):
+    my_packages = Package.objects.filter(maintainer=request.user)
+    return render(request, "dashboard.html", {"my_packages": my_packages})
+
 
 
 def register(request: HttpRequest):
