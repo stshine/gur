@@ -27,6 +27,14 @@ class Useflag(Base):
         return self.name
 
 
+class Keyword(Base):
+    name = models.CharField(max_length=127, unique=True)
+    description = models.TextField()
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Package(Base):
     name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
@@ -35,3 +43,10 @@ class Package(Base):
     license = models.CharField(max_length=127)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     maintainer = models.ForeignKey(User, on_delete=models.CASCADE)
+    keywords = models.ManyToManyField(Keyword)
+
+
+class Comment(Base):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    content = models.TextField()
