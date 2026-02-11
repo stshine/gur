@@ -5,11 +5,13 @@ description = "Web backend for the Gentoo User Repository project"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "celery>=5.6.2",
     "django>=5.2.10",
     "django-jinja>=2.11.0",
     "django-ninja>=1.5.3",
     "psycopg[binary,pool]>=3.3.2",
     "pyforgejo>=2.0.5",
     "python-dotenv>=1.2.1",
+    "redis>=7.2.0",
     "requests>=2.32.4",
 ]
