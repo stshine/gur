@@ -1,6 +1,7 @@
 import os
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from app.services import ForgejoService
 from app.forms import RegisterForm, PackageForm
@@ -21,6 +22,7 @@ def home(request: HttpRequest):
     return render(request, "index.html", {"added_packages": add_packages})
 
 
+@login_required
 def dashboard(request: HttpRequest):
     my_packages = Package.objects.filter(maintainer=request.user)
     return render(request, "dashboard.html", {"my_packages": my_packages})
@@ -31,6 +33,7 @@ def package_show(request: HttpRequest, package_name: str):
     return render(request, "package/show.html", {"package": package})
 
 
+@login_required
 def package_new(request: HttpRequest):
     if request.method == "POST":
         form = PackageForm(request.POST)
