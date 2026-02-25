@@ -46,6 +46,12 @@ class Package(Base):
     keywords = models.ManyToManyField(Keyword)
 
 
+class Ebuild(Base):
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    version = models.CharField(max_length=127)
+    content = models.TextField()
+
+
 class Comment(Base):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
