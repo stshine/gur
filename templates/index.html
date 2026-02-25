@@ -24,7 +24,7 @@
                     {% for package in added_packages %}
                     <tr>
                         <td>
-                            <a href="{{ url('package.show', package.name) }}">
+                            <a href="{{ url('package_show', package.name) }}">
                                 <span class="text-muted">{{ package.category.name }}</span> / <strong>{{ package.name }}</strong>
                             </a>
                         </td>
