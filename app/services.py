@@ -20,7 +20,6 @@ class ForgejoService:
     token: str
     base_url: str
 
-
     def __init__(self, token: str, base_url: str):
         self.token = token
         self.base_url = base_url
@@ -32,7 +31,6 @@ class ForgejoService:
             base_url=self.base_url,
             api_key=self.token,
         )
-
 
     def create_user(self, username: str, email: str, password: str) -> User:
         """
@@ -50,8 +48,9 @@ class ForgejoService:
 
         return user
 
-
-    def create_repository(self, username: str, name: str, description: str) -> Repository:
+    def create_repository(
+        self, username: str, name: str, description: str
+    ) -> Repository:
         """
         Create a new repository
         """
@@ -66,7 +65,6 @@ class ForgejoService:
             raise ForgejoError(f"Error creating repository: {e}")
 
         return repo
-
 
     def list_repo_entries(self, owner: str, repo: str) -> RepoGetContentsResponse:
         """
@@ -84,8 +82,9 @@ class ForgejoService:
 
         return entries
 
-
-    def get_file_content(self, owner: str, repo: str, file_path: str) -> Iterator[bytes]:
+    def get_file_content(
+        self, owner: str, repo: str, file_path: str, ref: str | None = None
+    ) -> Iterator[bytes]:
         """
         Get file content
         """
@@ -94,6 +93,7 @@ class ForgejoService:
                 owner=owner,
                 repo=repo,
                 filepath=file_path,
+                ref=ref,
             )
         except Exception as e:
             logger.error(f"Error getting file content: {e}")

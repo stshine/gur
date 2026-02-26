@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
+
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -29,8 +29,12 @@ SECRET_KEY = 'django-insecure-$iwz2qzbgr&g+$)=nlz=enbh_vkyc2k*gr=!pvjs#$r)wdbgib
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "").split(",")]
+ALLOWED_HOSTS = []
 
+# Celery Configuration Options
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# Optional: Store task results in Redis as well
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 # Application definition
 
