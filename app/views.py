@@ -72,7 +72,7 @@ def register(request: HttpRequest):
         if form.is_valid():
             forgejo_service = ForgejoService(
                 os.environ.get("FORGEJO_APIKEY", ""),
-                os.environ.get("FORGEJO_URL", "http://localhost:3000")
+                os.environ.get("FORGEJO_URL", "http://localhost:3000") + "/api/v1"
             )
             username = form.cleaned_data["username"]
             email = form.cleaned_data["email"]
