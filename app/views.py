@@ -45,7 +45,7 @@ def package_new(request: HttpRequest):
                 os.environ.get("FORGEJO_APIKEY", ""),
                 os.environ.get("FORGEJO_URL", "http://localhost:3000") + "/api/v1"
             )
-            git_repo = forgejo_service.create_repository("stshine", package_name, package_description)
+            git_repo = forgejo_service.create_repository(request.user.username, package_name, package_description)
             if not git_repo:
                 return render(request, "package/create.html", {"error": "Failed to create repository."})
 
