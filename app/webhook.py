@@ -8,7 +8,7 @@ from app.hookmodel import PushPayload
 from app.tasks import process_forgejo_event
 # import app.ebuild_parse
 
-gitapi = NinjaAPI()
+gitapi = NinjaAPI(urls_namespace="gitapi-v1")
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
