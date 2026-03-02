@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.postgres.indexes import GinIndex
 from django.db import models
 
 
@@ -44,6 +45,15 @@ class Package(Base):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     maintainer = models.ForeignKey(User, on_delete=models.CASCADE)
     keywords = models.ManyToManyField(Keyword)
+
+    # class Meta(Base.Meta):
+    #     indexes = [
+    #         models.Index(fields=["name"]),
+    #         GinIndex(fields=["name", "description"], name="package_search_gin"),
+    #     ]
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class Ebuild(Base):

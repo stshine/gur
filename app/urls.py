@@ -1,6 +1,8 @@
 from django.urls import include, path
 
+
 from . import views
+from .api import api
 from .webhook import gitapi
 
 urlpatterns = [
@@ -11,5 +13,6 @@ urlpatterns = [
     path("package/<str:package_name>", views.package_show, name="package_show"),
     path("accounts/register", views.register, name="register"),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("api/v1/", api.urls),
     path("git/", gitapi.urls)
 ]
